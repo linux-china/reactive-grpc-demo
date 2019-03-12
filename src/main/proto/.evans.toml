@@ -1,0 +1,4 @@
+[default]
+protoFile = ["greeter.proto"]
+package = "org.mvnsearch.service"
+service = "Greeter"
