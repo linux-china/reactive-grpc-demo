@@ -19,4 +19,5 @@ public class ReactiveGreeterImpl extends ReactorGreeterGrpc.GreeterImplBase {
 
 ### References
 
-* https://github.com/salesforce/reactive-grpc
+* Reactive gPRC: https://github.com/salesforce/reactive-grpc
+* Evans: https://github.com/ktr0731/evans
