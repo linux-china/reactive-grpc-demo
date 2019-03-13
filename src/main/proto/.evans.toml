@@ -1,4 +1,4 @@
 [default]
-protoFile = ["greeter.proto"]
+protoFile = ["account.proto"]
 package = "org.mvnsearch.service"
-service = "Greeter"
+service = "AccountService"
