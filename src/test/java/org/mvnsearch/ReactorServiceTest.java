@@ -7,9 +7,9 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
-import org.mvnsearch.service.HelloReply;
-import org.mvnsearch.service.HelloRequest;
-import org.mvnsearch.service.ReactorGreeterGrpc;
+import org.mvnsearch.service.AccountResponse;
+import org.mvnsearch.service.GetAccountRequest;
+import org.mvnsearch.service.ReactorAccountServiceGrpc;
 import reactor.core.publisher.Mono;
 
 /**
@@ -20,16 +20,16 @@ import reactor.core.publisher.Mono;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ReactorServiceTest {
     private ManagedChannel channel;
-    private ReactorGreeterGrpc.ReactorGreeterStub stub;
+    private ReactorAccountServiceGrpc.ReactorAccountServiceStub stub;
 
     @BeforeAll
-    public void setUp() throws Exception {
-        channel = ManagedChannelBuilder.forAddress("localhost", 8888).usePlaintext().build();
-        stub = ReactorGreeterGrpc.newReactorStub(channel);
+    public void setUp() {
+        channel = ManagedChannelBuilder.forAddress("localhost", 50051).usePlaintext().build();
+        stub = ReactorAccountServiceGrpc.newReactorStub(channel);
     }
 
     @AfterAll
-    public void tearDown() throws Exception {
+    public void tearDown() {
         channel.shutdownNow();
     }
 
@@ -38,12 +38,12 @@ public class ReactorServiceTest {
      */
     @Test
     public void testSayHello() throws Exception {
-        Mono<HelloRequest> request = Mono.just(HelloRequest.newBuilder().setName("OSCON").build());
+        Mono<GetAccountRequest> request = Mono.just(GetAccountRequest.newBuilder().setId(1).build());
         request
                 // Call service
-                .as(stub::sayHello)
+                .as(stub::findAccountById)
                 // Map response
-                .map(HelloReply::getMessage)
+                .map(AccountResponse::getNick)
                 .subscribe(System.out::println);
 
         Thread.sleep(1000);
