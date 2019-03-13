@@ -1,19 +1,17 @@
 package org.mvnsearch;
 
-import io.grpc.Server;
-import io.grpc.ServerBuilder;
-import org.mvnsearch.application.ReactiveAccountServiceGrpcImpl;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * Reactor services server
  *
  * @author linux_china
  */
+@SpringBootApplication
 public class ReactorServicesServer {
 
     public static void main(String[] args) throws Exception {
-        // Start the server
-        Server server = ServerBuilder.forPort(50051).addService(new ReactiveAccountServiceGrpcImpl()).build().start();
-        server.awaitTermination();
+        SpringApplication.run(ReactorServicesServer.class, args);
     }
 }
