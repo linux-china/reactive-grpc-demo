@@ -1,20 +1,63 @@
-Reactive-gPRC-demo
-===================
+Reactive gRPC Spring Boot Demo
+==============================
 
-Integrates reactive programming with grpc-java.
+Spring Boot Application with reactive gRPC support backbone by https://github.com/salesforce/reactive-grpc and https://github.com/LogNet/grpc-spring-boot-starter
 
-### Development Flow
+### Development
 
-* Write your protobuf IDL
-* Compile protobuf:  'mvn protobuf:compile'
-* Implement reactive gPRC service with Reactor Grpc classes: delegate logic to reactive service handler
+
+* Modify protobuf-maven-plugin with 'reactor-grpc' protocPlugin support
+
+```xml
+<plugin>
+   <groupId>org.xolstice.maven.plugins</groupId>
+   <artifactId>protobuf-maven-plugin</artifactId>
+   <version>0.6.1</version>
+   <configuration>
+       <protocArtifact>com.google.protobuf:protoc:${protobuf-java.version}:exe:${os.detected.classifier}
+       </protocArtifact>
+       <pluginId>grpc-java</pluginId>
+       <pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os.detected.classifier}
+       </pluginArtifact>
+       <protocPlugins>
+           <protocPlugin>
+               <id>reactor-grpc</id>
+               <groupId>com.salesforce.servicelibs</groupId>
+               <artifactId>reactor-grpc</artifactId>
+               <version>${reactive-grpc.version}</version>
+               <mainClass>com.salesforce.reactorgrpc.ReactorGrpcGenerator</mainClass>
+           </protocPlugin>
+       </protocPlugins>
+   </configuration>
+   <executions>
+       <execution>
+           <goals>
+               <goal>compile</goal>
+               <goal>compile-custom</goal>
+           </goals>
+       </execution>
+   </executions>
+</plugin>
+```
+
+* Implement gRPC service to extend reactive class
 * 
 ```
-public class ReactiveGreeterImpl extends ReactorGreeterGrpc.GreeterImplBase {
+@GRpcService
+public class ReactiveAccountServiceGrpcImpl extends ReactorAccountServiceGrpc.AccountServiceImplBase {
+    @Autowired
+    private AccountService accountService;
+
+    @Override
+    public Mono<AccountResponse> findAccountById(Mono<GetAccountRequest> request) {
+        return request.map(GetAccountRequest::getId)
+                .flatMap(accountService::findById)
+                .map(AccountMapper.INSTANCE::pojoToProtobuf);
+    }
 }
 ```
 
-* Build project: 'mvn -DskipTests clean package'
+* Start Spring Boot and test
 
 ### Mapper between domain model and Protobuf message
 
@@ -23,4 +66,5 @@ Please refer MapStruct http://mapstruct.org
 ### References
 
 * Reactive gPRC: https://github.com/salesforce/reactive-grpc
+* Spring Boot starter module for gRPC framework: https://github.com/LogNet/grpc-spring-boot-starter
 * Evans: https://github.com/ktr0731/evans
