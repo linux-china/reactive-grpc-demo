@@ -1,10 +1,11 @@
 package org.mvnsearch.application;
 
+import org.lognet.springboot.grpc.GRpcService;
 import org.mvnsearch.domain.AccountService;
-import org.mvnsearch.domain.impl.AccountServiceImpl;
 import org.mvnsearch.service.AccountResponse;
 import org.mvnsearch.service.GetAccountRequest;
 import org.mvnsearch.service.ReactorAccountServiceGrpc;
+import org.springframework.beans.factory.annotation.Autowired;
 import reactor.core.publisher.Mono;
 
 /**
@@ -12,9 +13,10 @@ import reactor.core.publisher.Mono;
  *
  * @author linux_china
  */
+@GRpcService
 public class ReactiveAccountServiceGrpcImpl extends ReactorAccountServiceGrpc.AccountServiceImplBase {
-    //reactive service handler
-    private AccountService accountService = new AccountServiceImpl();
+    @Autowired
+    private AccountService accountService;
 
     @Override
     public Mono<AccountResponse> findAccountById(Mono<GetAccountRequest> request) {
