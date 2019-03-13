@@ -7,7 +7,7 @@ Integrates reactive programming with grpc-java.
 
 * Write your protobuf IDL
 * Compile protobuf:  'mvn protobuf:compile'
-* Implement reactive service with Reactor Grpc classes
+* Implement reactive gPRC service with Reactor Grpc classes: delegate logic to reactive service handler
 * 
 ```
 public class ReactiveGreeterImpl extends ReactorGreeterGrpc.GreeterImplBase {
@@ -16,6 +16,9 @@ public class ReactiveGreeterImpl extends ReactorGreeterGrpc.GreeterImplBase {
 
 * Build project: 'mvn -DskipTests clean package'
 
+### Mapper between domain model and Protobuf message
+
+Please refer MapStruct http://mapstruct.org
 
 ### References
 
