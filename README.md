@@ -41,7 +41,7 @@ Spring Boot Application with reactive gRPC support backbone by https://github.co
 ```
 
 * Implement gRPC service to extend reactive class
-* 
+
 ```
 @GRpcService
 public class ReactiveAccountServiceGrpcImpl extends ReactorAccountServiceGrpc.AccountServiceImplBase {
@@ -57,7 +57,11 @@ public class ReactiveAccountServiceGrpcImpl extends ReactorAccountServiceGrpc.Ac
 }
 ```
 
-* Start Spring Boot and test
+* Start Spring Boot application and test with evans
+
+```
+evans src/main/proto/account.proto
+```
 
 ### Mapper between domain model and Protobuf message
 
