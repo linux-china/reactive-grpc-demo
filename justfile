@@ -8,4 +8,4 @@ build: grpc-compile
 
 # testing with evans
 testing:
-   evans src/main/proto/greeter.proto
+   evans src/main/proto/account.proto
