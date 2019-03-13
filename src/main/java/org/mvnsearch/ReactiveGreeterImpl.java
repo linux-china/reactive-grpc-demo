@@ -13,11 +13,11 @@ import reactor.core.publisher.Mono;
 public class ReactiveGreeterImpl extends ReactorGreeterGrpc.GreeterImplBase {
     @Override
     public Mono<HelloReply> sayHello(Mono<HelloRequest> request) {
-        return Mono.just(HelloReply.newBuilder().setMessage("echo").build());
+        return request.map(helloRequest -> HelloReply.newBuilder().setMessage("Hello" + helloRequest.getName()).build());
     }
 
     @Override
     public Mono<HelloReply> sayHelloAgain(Mono<HelloRequest> request) {
-        return Mono.just(HelloReply.newBuilder().setMessage("echo again").build());
+        return request.map(helloRequest -> HelloReply.newBuilder().setMessage("Hello Again" + helloRequest.getName()).build());
     }
 }
