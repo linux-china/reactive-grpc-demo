@@ -12,7 +12,7 @@ public class ReactorServicesServer {
     
     public static void main(String[] args) throws Exception {
         // Start the server
-        Server server = ServerBuilder.forPort(50051).addService(new ReactiveGreeterImpl()).build().start();
+        Server server = ServerBuilder.forPort(50051).addService(new ReactiveAccountServiceGrpcImpl()).build().start();
         server.awaitTermination();
     }
 }
