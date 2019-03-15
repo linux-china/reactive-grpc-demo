@@ -1,5 +1,6 @@
 package org.mvnsearch.application;
 
+import com.google.protobuf.Int32Value;
 import org.lognet.springboot.grpc.GRpcService;
 import org.mvnsearch.domain.AccountService;
 import org.mvnsearch.service.AccountResponse;
@@ -19,8 +20,15 @@ public class ReactiveAccountServiceGrpcImpl extends ReactorAccountServiceGrpc.Ac
     private AccountService accountService;
 
     @Override
-    public Mono<AccountResponse> findAccountById(Mono<GetAccountRequest> request) {
+    public Mono<AccountResponse> findAccount(Mono<GetAccountRequest> request) {
         return request.map(GetAccountRequest::getId)
+                .flatMap(accountService::findById)
+                .map(AccountMapper.INSTANCE::pojoToProtobuf);
+    }
+
+    @Override
+    public Mono<AccountResponse> findById(Mono<Int32Value> request) {
+        return request.map(Int32Value::getValue)
                 .flatMap(accountService::findById)
                 .map(AccountMapper.INSTANCE::pojoToProtobuf);
     }
