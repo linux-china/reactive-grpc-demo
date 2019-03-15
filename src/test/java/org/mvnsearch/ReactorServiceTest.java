@@ -39,12 +39,11 @@ public class ReactorServiceTest {
     @Test
     public void testSayHello() throws Exception {
         Mono<GetAccountRequest> request = Mono.just(GetAccountRequest.newBuilder().setId(1).build());
-        request
-                // Call service
-                .as(stub::findAccountById)
-                // Map response
-                .map(AccountResponse::getNick)
-                .subscribe(System.out::println);
+        request.as(stub::findAccount)
+                .subscribe(response->{
+                  //logic here
+                    System.out.println(response.getNick());
+                });
 
         Thread.sleep(1000);
     }
