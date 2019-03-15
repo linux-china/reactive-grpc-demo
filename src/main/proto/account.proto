@@ -5,10 +5,15 @@ option java_outer_classname = "AccountProto";
 
 package org.mvnsearch.service;
 
+import "google/protobuf/wrappers.proto";
+
 // The greeting service definition.
 service AccountService {
     // Sends a greeting
-    rpc FindAccountById (GetAccountRequest) returns (AccountResponse) {
+    rpc FindAccount (GetAccountRequest) returns (AccountResponse) {
+    }
+
+    rpc FindById (google.protobuf.Int32Value) returns (AccountResponse) {
     }
 }
 
