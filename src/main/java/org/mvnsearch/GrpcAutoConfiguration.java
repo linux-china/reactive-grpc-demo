@@ -22,6 +22,8 @@ public class GrpcAutoConfiguration {
             @Override
             public <ReqT, RespT> ServerCall.Listener<ReqT> interceptCall(ServerCall<ReqT, RespT> call, Metadata headers, ServerCallHandler<ReqT, RespT> next) {
                 System.out.println("intercepting");
+                //gRPC over HTTP2 https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md
+                // ServerCall includes all information from client
                 return next.startCall(call, headers);
             }
         };
