@@ -72,3 +72,4 @@ Please refer MapStruct http://mapstruct.org
 * Reactive gPRC: https://github.com/salesforce/reactive-grpc
 * Spring Boot starter module for gRPC framework: https://github.com/LogNet/grpc-spring-boot-starter
 * Evans: https://github.com/ktr0731/evans
+* gRPCurl: Like cURL, but for gRPC https://github.com/fullstorydev/grpcurl
