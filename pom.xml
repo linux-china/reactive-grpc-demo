@@ -14,7 +14,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <spring-boot.version>2.2.0.RELEASE</spring-boot.version>
+        <spring-boot.version>2.2.1.RELEASE</spring-boot.version>
         <protobuf-java.version>3.10.0</protobuf-java.version>
         <grpc.version>1.25.0</grpc.version>
         <reactive-grpc.version>1.0.0</reactive-grpc.version>
@@ -67,7 +67,7 @@
         <dependency>
             <groupId>io.github.lognet</groupId>
             <artifactId>grpc-spring-boot-starter</artifactId>
-            <version>3.4.3</version>
+            <version>3.5.0</version>
         </dependency>
         <!-- mapstruct-->
         <dependency>
