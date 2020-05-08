@@ -73,3 +73,4 @@ Please refer MapStruct http://mapstruct.org
 * Spring Boot starter module for gRPC framework: https://github.com/LogNet/grpc-spring-boot-starter
 * Evans: https://github.com/ktr0731/evans
 * gRPCurl: Like cURL, but for gRPC https://github.com/fullstorydev/grpcurl
+* xDS-Based Global Load Balancing: https://github.com/grpc/proposal/blob/master/A27-xds-global-load-balancing.md
