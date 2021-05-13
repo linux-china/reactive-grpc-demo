@@ -7,6 +7,7 @@ import org.mvnsearch.service.AccountResponse;
 import org.mvnsearch.service.GetAccountRequest;
 import org.mvnsearch.service.ReactorAccountServiceGrpc;
 import org.springframework.beans.factory.annotation.Autowired;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
@@ -31,5 +32,15 @@ public class ReactiveAccountServiceGrpcImpl extends ReactorAccountServiceGrpc.Ac
         return request.map(Int32Value::getValue)
                 .flatMap(accountService::findById)
                 .map(AccountMapper.INSTANCE::pojoToProtobuf);
+    }
+
+    @Override
+    public Flux<AccountResponse> findAccounts(Mono<GetAccountRequest> request) {
+        return Flux.just(AccountResponse.newBuilder().setNick("xxx").build());
+    }
+
+    @Override
+    public Flux<AccountResponse> channelAccounts(Flux<GetAccountRequest> request) {
+        return Flux.just(AccountResponse.newBuilder().setNick("xxx").build());
     }
 }
