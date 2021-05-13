@@ -9,21 +9,24 @@ import "google/protobuf/wrappers.proto";
 
 // The greeting service definition.
 service AccountService {
-    // Sends a greeting
-    rpc FindAccount (GetAccountRequest) returns (AccountResponse) {
-    }
+  // Sends a greeting
+  rpc findAccount (GetAccountRequest) returns (AccountResponse);
 
-    rpc FindById (google.protobuf.Int32Value) returns (AccountResponse) {
-    }
+  rpc findAccounts (GetAccountRequest) returns (stream AccountResponse);
+
+  rpc channelAccounts (stream GetAccountRequest) returns (stream AccountResponse);
+
+  rpc findById (google.protobuf.Int32Value) returns (AccountResponse) {
+  }
 }
 
 // account message
 message AccountResponse {
-    int32 id = 1;
-    string nick = 2;
+  int32 id = 1;
+  string nick = 2;
 }
 
 // The request message containing the user's name.
 message GetAccountRequest {
-    int32 id = 1;
+  int32 id = 1;
 }
