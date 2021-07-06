@@ -17,7 +17,7 @@
         <spring-boot.version>2.5.2</spring-boot.version>
         <protobuf-java.version>3.17.3</protobuf-java.version>
         <grpc.version>1.39.0</grpc.version>
-        <reactive-grpc.version>1.0.1</reactive-grpc.version>
+        <reactive-grpc.version>1.1.0</reactive-grpc.version>
         <junit5.version>5.7.2</junit5.version>
         <mapstruct.version>1.4.2.Final</mapstruct.version>
     </properties>
