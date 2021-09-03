@@ -6,6 +6,7 @@ option java_outer_classname = "AccountProto";
 package org.mvnsearch.service;
 
 import "google/protobuf/wrappers.proto";
+import "google/protobuf/field_mask.proto";
 
 // The greeting service definition.
 service AccountService {
@@ -29,4 +30,5 @@ message AccountResponse {
 // The request message containing the user's name.
 message GetAccountRequest {
   int32 id = 1;
+  google.protobuf.FieldMask field_mask = 2;
 }
