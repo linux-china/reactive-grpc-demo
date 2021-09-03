@@ -10,7 +10,7 @@ public class ProtobufTest {
 
     @Test
     public void testFieldMask() {
-        FieldMask fieldMask = FieldMaskUtil.fromFieldNumbers(AccountResponse.class, AccountResponse.NICK_FIELD_NUMBER);
+        FieldMask fieldMask = FieldMask.newBuilder().addPaths("nick").build();  // FieldMaskUtil.fromFieldNumbers(AccountResponse.class, AccountResponse.NICK_FIELD_NUMBER);
         final AccountResponse accountDTO = AccountResponse.newBuilder().setId(1).setNick("nick").build();
         AccountResponse.Builder accountWithMaskedFields = AccountResponse.newBuilder();
         FieldMaskUtil.merge(fieldMask, accountDTO, accountWithMaskedFields);
