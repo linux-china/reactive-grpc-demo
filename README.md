@@ -77,3 +77,4 @@ Please refer MapStruct http://mapstruct.org
 * Stop Breaking the Proto! Designing for Change in Microservices World https://www.youtube.com/watch?v=hbxOO2wnA1Y&list=PLj6h78yzYM2NN72UX_fdmc5CZI-D5qfJL&index=13
 * Practical API Design at Netflix, Part 1: Using Protobuf FieldMask: https://netflixtechblog.com/practical-api-design-at-netflix-part-1-using-protobuf-fieldmask-35cfdc606518
 * Protobuf Field Masks: https://pinkiepractices.com/posts/protobuf-field-masks/
+* protoc-gen-doc: Documentation generator plugin for Google Protocol Buffers https://github.com/pseudomuto/protoc-gen-doc
