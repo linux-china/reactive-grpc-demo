@@ -10,8 +10,16 @@ build: grpc-compile
 testing:
    evans
 
+grpc-docs:
+   mkdir -p doc
+   protoc --doc_out=./doc --doc_opt=html,index.html src/main/proto/*.proto
+
 services:
-   grpcurl -plaintext localhost:50051 list
+   grpcurl -plaintext localhost:50052 list
 
 curl:
-   grpcurl -plaintext -d '{"id": 1234}' localhost:50051 org.mvnsearch.service.AccountService/findAccount
+   grpcurl -plaintext -d '{"id": 1234}' localhost:50052 org.mvnsearch.service.AccountService/findAccount
+
+setup:
+   go get -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
+   
