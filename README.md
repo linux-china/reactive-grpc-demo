@@ -78,3 +78,4 @@ Please refer MapStruct http://mapstruct.org
 * Practical API Design at Netflix, Part 1: Using Protobuf FieldMask: https://netflixtechblog.com/practical-api-design-at-netflix-part-1-using-protobuf-fieldmask-35cfdc606518
 * Protobuf Field Masks: https://pinkiepractices.com/posts/protobuf-field-masks/
 * protoc-gen-doc: Documentation generator plugin for Google Protocol Buffers https://github.com/pseudomuto/protoc-gen-doc
+* Various gRPC benchmarks: https://github.com/LesnyRumcajs/grpc_bench/wiki
