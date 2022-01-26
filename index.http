@@ -1,5 +1,7 @@
+### grpc call find account
+//@name findAccount
 GRPC localhost:50052/org.mvnsearch.service.AccountService/findAccount
 
 {
-  "id": 1
+  "id": 2
 }
