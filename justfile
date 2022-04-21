@@ -20,6 +20,9 @@ services:
 curl:
    grpcurl -plaintext -d '{"id": 1234}' localhost:50052 org.mvnsearch.service.AccountService/findAccount
 
+gui-web:
+   grpcui -plaintext localhost:50052 &
+
 setup:
    go get -u github.com/pseudomuto/protoc-gen-doc/cmd/protoc-gen-doc
    
