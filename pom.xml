@@ -16,12 +16,12 @@
         <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <spring-boot.version>2.7.2</spring-boot.version>
-        <protobuf-java.version>3.21.4</protobuf-java.version>
-        <grpc.version>1.48.0</grpc.version>
+        <spring-boot.version>2.7.7</spring-boot.version>
+        <protobuf-java.version>3.21.12</protobuf-java.version>
+        <grpc.version>1.51.1</grpc.version>
         <reactive-grpc.version>1.2.3</reactive-grpc.version>
-        <junit5.version>5.9.0</junit5.version>
-        <mapstruct.version>1.5.2.Final</mapstruct.version>
+        <junit5.version>5.9.1</junit5.version>
+        <mapstruct.version>1.5.3.Final</mapstruct.version>
     </properties>
 
     <dependencies>
@@ -68,7 +68,7 @@
         <dependency>
             <groupId>io.github.lognet</groupId>
             <artifactId>grpc-spring-boot-starter</artifactId>
-            <version>4.8.0</version>
+            <version>4.9.1</version>
         </dependency>
         <!-- mapstruct-->
         <dependency>
