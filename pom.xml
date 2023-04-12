@@ -4,6 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.0.5</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
     <groupId>org.mvnsearch</groupId>
     <artifactId>reactive-grpc-demo</artifactId>
     <version>1.0.0-SNAPSHOT</version>
@@ -22,6 +28,7 @@
         <reactive-grpc.version>1.2.3</reactive-grpc.version>
         <junit5.version>5.9.2</junit5.version>
         <mapstruct.version>1.5.3.Final</mapstruct.version>
+        <mainclass>org.mvnsearch.ReactorServicesServer</mainclass>
     </properties>
 
     <dependencies>
@@ -56,6 +63,10 @@
             <artifactId>grpc-grpclb</artifactId>
         </dependency>
         <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-services</artifactId>
+        </dependency>
+        <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-core</artifactId>
         </dependency>
@@ -69,6 +80,20 @@
             <groupId>io.github.lognet</groupId>
             <artifactId>grpc-spring-boot-starter</artifactId>
             <version>5.1.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.grpc</groupId>
+                    <artifactId>grpc-netty-shaded</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.netty</groupId>
+                    <artifactId>netty-tcnative-boringssl-static</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.netty</groupId>
+                    <artifactId>netty-tcnative-boringssl-static</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- mapstruct-->
         <dependency>
@@ -119,11 +144,11 @@
                 <scope>import</scope>
             </dependency>
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
-                <scope>import</scope>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-bom</artifactId>
+                <version>4.1.91.Final</version>
                 <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.junit</groupId>
@@ -181,6 +206,13 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.graalvm.buildtools</groupId>
+                <artifactId>native-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>${mainclass}</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>
