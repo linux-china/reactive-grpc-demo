@@ -7,7 +7,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.3.0</version>
+    <version>3.3.1</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
   <groupId>org.mvnsearch</groupId>
@@ -22,7 +22,7 @@
     <java.version>21</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
-    <spring-boot.version>3.3.0</spring-boot.version>
+    <spring-boot.version>3.3.1</spring-boot.version>
     <protobuf-java.version>3.25.3</protobuf-java.version>
     <grpc.version>1.64.0</grpc.version>
     <reactive-grpc.version>1.2.4</reactive-grpc.version>
@@ -142,7 +142,7 @@
       <dependency>
         <groupId>io.netty</groupId>
         <artifactId>netty-bom</artifactId>
-        <version>4.1.106.Final</version>
+        <version>4.1.111.Final</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -168,7 +168,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.11.0</version>
+        <version>3.13.0</version>
         <configuration>
           <parameters>true</parameters>
         </configuration>
