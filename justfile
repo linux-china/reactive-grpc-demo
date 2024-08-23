@@ -6,6 +6,10 @@ grpc-compile:
 build: grpc-compile
    mvn -DskipTests clean package
 
+# native build
+native-build:
+   mvn -Pnative -DskipTests clean package native:compile
+
 # testing with evans
 testing:
    evans
