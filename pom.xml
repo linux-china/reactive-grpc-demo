@@ -7,7 +7,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.4.1</version>
+    <version>3.4.3</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
   <groupId>org.mvnsearch</groupId>
@@ -22,11 +22,11 @@
     <java.version>21</java.version>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
-    <spring-boot.version>3.4.1</spring-boot.version>
-    <protobuf-java.version>4.29.2</protobuf-java.version>
-    <grpc.version>1.69.0</grpc.version>
+    <spring-boot.version>3.4.3</spring-boot.version>
+    <protobuf-java.version>4.30.0</protobuf-java.version>
+    <grpc.version>1.71.0</grpc.version>
     <reactive-grpc.version>1.2.4</reactive-grpc.version>
-    <junit5.version>5.11.4</junit5.version>
+    <junit5.version>5.12.0</junit5.version>
     <mapstruct.version>1.6.3</mapstruct.version>
     <mainClass>org.mvnsearch.ReactorServicesServer</mainClass>
   </properties>
@@ -172,7 +172,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.13.0</version>
+        <version>3.14.0</version>
         <configuration>
           <parameters>true</parameters>
         </configuration>
@@ -218,6 +218,9 @@
               <goal>compile</goal>
               <goal>compile-custom</goal>
             </goals>
+            <configuration>
+              <pluginParameter>jakarta_omit,@generated=omit</pluginParameter>
+            </configuration>
           </execution>
         </executions>
       </plugin>
